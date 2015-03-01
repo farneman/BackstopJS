@@ -2,8 +2,10 @@
   "name": "backstopjs",
   "version": "0.4.2",
   "description": "",
-  "scripts": {
-
+  "preferGlobal": "true",
+  "scripts": {},
+  "bin": {
+    "backstop": "bin/backstop.js"
   },
   "repository": {
     "type": "git",
@@ -11,7 +13,7 @@
   },
   "author": "",
   "license": "",
-  "main": "",
+  "main": "lib/index.js",
   "devDependencies": {
     "mocha": "^1.21.5",
     "chai": "^1.9.2"
@@ -25,6 +27,8 @@
     "gulp-open": "^0.3.0",
     "gulp-rename": "^1.2.0",
     "http-proxy": "~1.1.4",
+    "liftoff": "^2.0.2",
+    "minimist": "^1.1.0",
     "require-dir": "^0.1.0",
     "underscore": "~1.6.0"
   }
