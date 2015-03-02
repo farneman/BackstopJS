@@ -1,59 +1,81 @@
 #!/usr/bin/env node
-var Liftoff = require('liftoff'),
-    argv = require('minimist')(process.argv.slice(2));
+var program = require('commander'),
+    read = require('read-file-stdin'),
+    resolve = require('path').resolve,
+    Backstop = require('..');
 
-var Backstop = new Liftoff({
-    name: 'backstop',
-    moduleName: 'backstopjs',
-    configName: 'backstop',
-    extensions: {
-        '.json': null
-    }
+/**
+ * Usage
+ */
+
+program.version(require('../package.json').version)
+    .usage('<command>')
+    .option('-c, --config <path>', 'configration file location', './backstop.json');
+
+/**
+ * Help/examples
+ */
+
+program.on('--help', function () {
+    console.log('Need some help here...');
 });
 
-Backstop.launch({
-    cwd: argv.cwd,
-    configPath: argv.config,
-    require: argv.require
-}, invoke);
+/**
+ * Parse args
+ */
 
-function invoke (env) {
-    var backstop,
-        task = argv._[0],
-        tasks = [
-            'bless',
-            'clean',
-            'echo',
-            'genConfig',
-            'init',
-            'openReport',
-            'reference',
-            'report',
-            'start',
-            'stop',
-            'test'
-        ];
+program.parse(process.argv);
 
-    console.log(process.cwd(), env.cwd);
-    if (process.cwd() !== env.cwd) {
-        process.chdir(env.cwd);
-        console.log('Working directory changed to', env.cwd);
-    }
+/**
+ * Setup
+ */
 
-    if (!env.modulePath) {
-        console.log('Local backstop not found in:', env.cwd);
-        process.exit(1);
-    }
-    backstop = require(env.modulePath);
+var task = program.args[0];
+if (!task) {
+    return program.help();
+}
 
-    if (tasks.indexOf(task) == -1) {
-        console.log('\'' + task + '\' is not a backstop command');
-        process.exit(1);
-    }
+var currentDir = process.cwd();
+var configFile = program.config;
+var configPath = resolve(currentDir, configFile);
 
-    if (env.configPath) {
-        backstop(task, require(env.configPath));
-    } else {
-        console.log('No backstop.json found.');
-    }
+
+/**
+ * Commands
+ */
+
+program.command('genConfig')
+    .description('Generate a default capture config file')
+    .action(run('geoConfig'));
+
+program.command('echo')
+    .description('Display troubleshooting info')
+    .action(run('echo'));
+
+/**
+ * Run
+ */
+
+function run (task) {
+    read(configPath, function (err, buffer) {
+        if (err) {
+            if (err.code === 'ENOENT') {
+                console.log('No backstop.json file found.');
+            } else {
+                console.log(err);
+            }
+
+            return;
+        }
+
+        var config = JSON.parse(buffer);
+        var backstopInst = new Backstop(config);
+
+        try {
+            console.log('Running ' + task + '...');
+            backstopInst[task]();
+        } catch (e) {
+            console.log(e);
+        }
+    });
 }
