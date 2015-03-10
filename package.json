@@ -13,7 +13,7 @@
   },
   "author": "",
   "license": "",
-  "main": "lib/index.js",
+  "main": "index.js",
   "devDependencies": {
     "mocha": "^1.21.5",
     "chai": "^1.9.2"
