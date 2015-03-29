@@ -99,9 +99,9 @@ function run (cmd, options) {
     var task = program.args[0].name(),
         currentDir = process.cwd(),
         configFile = program.config,
-        configPath = resolve(currentDir, configFile),
-        runTask = function (config) {
-            var backstopInst = new Backstop(program.path, config);
+        configPath = resolve(currentDir, configFile);
+        var runTask = function (config) {
+            var backstopInst = new Backstop(currentDir, config);
 
             try {
                 console.log('Running ' + task + '...');

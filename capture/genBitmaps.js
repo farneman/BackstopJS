@@ -1,12 +1,9 @@
-
 var fs = require('fs');
-
-
 
 var bitmaps_reference = 'bitmaps_reference';
 var bitmaps_test = 'bitmaps_test';
-var compareConfigFileName = 'compare/config.json'
-var genConfigPath = 'capture/config.json'
+var compareConfigFileName = 'compare/config.json';
+var genConfigPath = 'capture/config.json';
 
 
 var configJSON = fs.read(genConfigPath);
