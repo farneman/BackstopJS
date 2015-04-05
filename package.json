@@ -31,6 +31,7 @@
     "open": "0.0.5",
     "read-file-stdin": "^0.2.0",
     "require-dir": "^0.1.0",
+    "spooky": "git://github.com/jegtnes/SpookyJS.git",
     "underscore": "~1.6.0"
   }
 }
