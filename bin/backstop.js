@@ -48,10 +48,6 @@ program.command('genConfig')
     .description('Generate a default capture config file')
     .action(run);
 
-program.command('init')
-    .description('Manage dependencies')
-    .action(run);
-
 program.command('openReport')
     .description('Open the report in a browser')
     .action(run);

@@ -12,7 +12,6 @@ Backstop.prototype.bless = require('./lib/bless');
 Backstop.prototype.clean = require('./lib/clean');
 Backstop.prototype.echo = require('./lib/echo');
 Backstop.prototype.genConfig = require('./lib/genConfig');
-Backstop.prototype.init = require('./lib/init');
 Backstop.prototype.openReport = require('./lib/openReport');
 Backstop.prototype.reference = require('./lib/reference');
 Backstop.prototype.report = require('./lib/report');
