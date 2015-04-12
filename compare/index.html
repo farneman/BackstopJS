@@ -31,11 +31,11 @@
 			largeImageThreshold: 1200
 		}
 
-		var misMatchThresh = 1;
 
 		//A TEST PAIR ARE TWO IMAGE OBJECTS PLUS THEIR META DATA WHICH WILL BE COMPARED BY RESEMBLE
 		$scope.testPairs = [];
 
+		var misMatchThresh = 1;
 		$scope.testPairsCompleted = 0;
 		$scope.passedCount = 0;
 		$scope.testDuration = 0;
@@ -137,9 +137,6 @@
 					$scope.$digest();
 				}
 			);
-
-
-
 		}
 
 

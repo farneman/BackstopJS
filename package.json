@@ -32,6 +32,7 @@
     "gulp-open": "^0.3.0",
     "gulp-rename": "^1.2.0",
     "http-proxy": "~1.1.4",
+    "node-resemble-js": "0.0.4",
     "open": "0.0.5",
     "read-file-stdin": "^0.2.0",
     "require-dir": "^0.1.0",

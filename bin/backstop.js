@@ -36,10 +36,6 @@ program.command('clean')
     .description('Clean the bitmaps_reference directory')
     .action(run);
 
-program.command('clean')
-    .description('Clean the bitmaps_reference directory')
-    .action(run);
-
 program.command('echo')
     .description('Display troubleshooting info')
     .action(run);
@@ -58,14 +54,6 @@ program.command('reference')
 
 program.command('report')
     .description('View the report')
-    .action(run);
-
-program.command('start')
-    .description('Start the local web server')
-    .action(run);
-
-program.command('stop')
-    .description('Stop the local web server')
     .action(run);
 
 program.command('test')

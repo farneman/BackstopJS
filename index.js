@@ -15,8 +15,6 @@ Backstop.prototype.genConfig = require('./lib/genConfig');
 Backstop.prototype.openReport = require('./lib/openReport');
 Backstop.prototype.reference = require('./lib/reference');
 Backstop.prototype.report = require('./lib/report');
-Backstop.prototype.start = require('./lib/start');
-Backstop.prototype.stop = require('./lib/stop');
 Backstop.prototype.test = require('./lib/test');
 
 module.exports = Backstop;
